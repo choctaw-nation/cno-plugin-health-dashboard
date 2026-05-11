@@ -1,0 +1,26 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "cno-health-dashboard/chart",
+	"version": "1.0.0",
+	"title": "CNO Health Dashboard Chart",
+	"category": "widgets",
+	"icon": "chart-line",
+	"keywords": [ "health", "dashboard", "chart", "widget" ],
+	"description": "A block that displays health dashboard charts.",
+	"example": {},
+	"supports": {
+		"html": false,
+		"align": true,
+		"dimensions": {
+			"minHeight": true
+		},
+		"multiple": false,
+		"customClassName": true,
+		"spacing": {
+			"margin": [ "top", "bottom" ]
+		}
+	},
+	"editorScript": "file:./index.tsx",
+	"viewScript": "file:./view.tsx"
+}

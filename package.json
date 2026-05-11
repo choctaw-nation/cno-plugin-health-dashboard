@@ -1,0 +1,54 @@
+{
+	"name": "cno-plugin-health-dashboard",
+	"version": "1.0.0",
+	"description": "A plugin displaying a health dashboard with virality charts for common diseases.",
+	"prettier": "@wordpress/prettier-config",
+	"browserslist": [
+		"extends @wordpress/browserslist-config"
+	],
+	"engines": {
+		"node": ">= 24"
+	},
+	"author": "Choctaw Nation of Oklahoma",
+	"files": [
+		"build",
+		"inc",
+		"README.md",
+		"LICENSE",
+		"CHANGELOG.md",
+		"cno-plugin-health-dashboard.php",
+		"vendor"
+	],
+	"scripts": {
+		"build": "wp-scripts build --config=webpack.config.mjs --blocks-manifest",
+		"lint:css": "npx stylelint '**/*.scss' '**/*.css' --fix --allow-empty-input",
+		"lint:js": "npx eslint --fix",
+		"packages-update": "wp-scripts packages-update",
+		"plugin-zip": "wp-scripts build --config=webpack.config.mjs --blocks-manifest && wp-scripts plugin-zip",
+		"start": "wp-scripts start --config=webpack.config.mjs --blocks-manifest"
+	},
+	"devDependencies": {
+		"@eslint/compat": "^2",
+		"@wordpress/api-fetch": "^7.45.0",
+		"@wordpress/block-editor": "^15.18.0",
+		"@wordpress/blocks": "^15.18.0",
+		"@wordpress/components": "^33.0.0",
+		"@wordpress/dom-ready": "^4.45.0",
+		"@wordpress/element": "^6.45.0",
+		"@wordpress/eslint-plugin": "^25",
+		"@wordpress/icons": "^13.0.0",
+		"@wordpress/scripts": "^32",
+		"eslint": "^9",
+		"globals": "^17",
+		"prettier": "npm:wp-prettier@^3",
+		"react": "^18",
+		"react-dom": "^18",
+		"stylelint": "^17",
+		"stylelint-config-standard-scss": "^17",
+		"stylelint-scss": "^7",
+		"typescript": "^6"
+	},
+	"dependencies": {
+		"recharts": "^3.8.1"
+	}
+}

@@ -1,0 +1,32 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "cno-health-dashboard/latest-data",
+	"version": "1.0.0",
+	"title": "CNO Health Dashboard Latest Data",
+	"category": "text",
+	"icon": "chart-line",
+	"keywords": [ "health", "dashboard", "latest data", "widget" ],
+	"description": "A block that displays when the data for the health dashboard was most recently updated.",
+	"example": {},
+	"supports": {
+		"html": false,
+		"align": true,
+		"dimensions": {
+			"minHeight": true
+		},
+		"multiple": false,
+		"customClassName": true,
+		"spacing": {
+			"margin": true
+		}
+	},
+	"attributes": {
+		"format": {
+			"type": "string",
+			"default": "F j, Y"
+		}
+	},
+	"editorScript": "file:./index.tsx",
+	"render": "file:./render.php"
+}
