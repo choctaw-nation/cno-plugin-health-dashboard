@@ -144,6 +144,9 @@ class Rest_Router extends WP_REST_Controller {
 		);
 	}
 
+	/**
+	 * Get the last updated date from the latest health data entry
+	 */
 	public function get_last_updated(): WP_REST_Response|WP_Error {
 		try {
 			$data         = $this->file_reader->get_latest_data();
