@@ -1,6 +1,6 @@
 {
 	"name": "cno-plugin-health-dashboard",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "A plugin displaying a health dashboard with virality charts for common diseases.",
 	"prettier": "@wordpress/prettier-config",
 	"browserslist": [
