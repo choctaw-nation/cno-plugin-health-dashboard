@@ -10,7 +10,7 @@ async function fetchData(): Promise< rawData[] > {
 
 export default function App() {
 	const [ isLoading, setIsLoading ] = useState( true );
-	const [ errorMessage, setErrorMessage ] = useState( null );
+	const [ errorMessage, setErrorMessage ] = useState< string >( '' );
 	const [ data, setData ] = useState< rawData[] | null >( null );
 
 	useEffect( () => {
@@ -28,16 +28,32 @@ export default function App() {
 			.finally( () => setIsLoading( false ) );
 	}, [] );
 
-	const layout = window.innerWidth < 500 ? 'vertical' : 'horizontal';
-	const shouldShowChart =
-		! isLoading && ! errorMessage && data && data.length > 0;
+	const shouldShowChart = ! errorMessage && data && data.length > 0;
 
 	return (
 		<>
-			{ isLoading && <p>Loading data...</p> }
+			{ isLoading && (
+				<div
+					className="placeholder-glow"
+					style={ { minHeight: 'inherit' } }
+				>
+					<div className="placeholder"></div>
+					<p
+						style={ {
+							position: 'absolute',
+							top: '50%',
+							left: '50%',
+							transform: 'translate(-50%, -50%)',
+							margin: 0,
+						} }
+					>
+						Loading data...
+					</p>
+				</div>
+			) }
 			{ errorMessage && <p>{ errorMessage }</p> }
-			{ shouldShowChart && <Chart data={ data } layout={ layout } /> }
-			{ ! shouldShowChart && (
+			{ ! isLoading && shouldShowChart && <Chart data={ data } /> }
+			{ ! isLoading && ! shouldShowChart && (
 				<div
 					className="col bg-warning p-5 fs-6 bg-opacity-50 fw-bold text-dark"
 					role="alert"

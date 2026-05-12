@@ -1,0 +1,31 @@
+/* Placeholder glow effect */
+.placeholder-glow {
+	position: relative;
+
+	.placeholder {
+		inset: 0;
+		z-index: -1;
+		animation: placeholder-glow 1.75s infinite ease-in-out;
+		opacity: 0.2;
+		background-color: #333;
+		display: inline-block;
+		height: 100%;
+		width: 100%;
+		min-height: 1em;
+		position: absolute;
+	}
+}
+
+@keyframes placeholder-glow {
+	0% {
+		opacity: 0.2;
+	}
+
+	50% {
+		opacity: 0.35;
+	}
+
+	100% {
+		opacity: 0.2;
+	}
+}
