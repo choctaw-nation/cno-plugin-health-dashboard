@@ -1,12 +1,18 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "cno-health-dashboard/latest-data",
+	"name": "cno-health-dashboard/last-update",
 	"version": "1.0.0",
-	"title": "CNO Health Dashboard Latest Data",
+	"title": "[Health Dashboard] Last Updated",
 	"category": "text",
 	"icon": "chart-line",
-	"keywords": [ "health", "dashboard", "latest data", "widget" ],
+	"keywords": [
+		"health",
+		"dashboard",
+		"last update",
+		"fetch",
+		"latest data"
+	],
 	"description": "A block that displays when the data for the health dashboard was most recently updated.",
 	"example": {},
 	"supports": {

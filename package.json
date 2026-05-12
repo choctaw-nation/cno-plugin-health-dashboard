@@ -20,12 +20,12 @@
 		"vendor"
 	],
 	"scripts": {
-		"build": "wp-scripts build --config=webpack.config.mjs --blocks-manifest",
+		"build": "wp-scripts build --blocks-manifest --webpack-copy-php",
 		"lint:css": "npx stylelint '**/*.scss' '**/*.css' --fix --allow-empty-input",
 		"lint:js": "npx eslint --fix",
 		"packages-update": "wp-scripts packages-update",
-		"plugin-zip": "wp-scripts build --config=webpack.config.mjs --blocks-manifest && wp-scripts plugin-zip",
-		"start": "wp-scripts start --config=webpack.config.mjs --blocks-manifest"
+		"plugin-zip": "wp-scripts build --blocks-manifest --webpack-copy-php && wp-scripts plugin-zip",
+		"start": "wp-scripts start --blocks-manifest --webpack-copy-php"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^2",
@@ -33,6 +33,7 @@
 		"@wordpress/block-editor": "^15.18.0",
 		"@wordpress/blocks": "^15.18.0",
 		"@wordpress/components": "^33.0.0",
+		"@wordpress/date": "^5.45.0",
 		"@wordpress/dom-ready": "^4.45.0",
 		"@wordpress/element": "^6.45.0",
 		"@wordpress/eslint-plugin": "^25",

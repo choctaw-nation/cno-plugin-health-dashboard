@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: [Choctaw Nation of Oklahoma] Health Dashboard App
- * Description: Displays a virality chart of common diseases with reCharts.
+ * Description: Displays a virality chart of common diseases with recharts.
  * Plugin URI: https://github.com/choctaw-nation/cno-plugin-health-dashboard
  * Version: 1.0.0
  * Author: Choctaw Nation of Oklahoma
@@ -46,3 +46,26 @@ register_uninstall_hook( __FILE__, array( 'ChoctawNation\HealthDashboard\Plugin_
 
 // Load the Plugin
 add_action( 'plugins_loaded', array( $cno_plugin, 'load_plugin' ) );
+
+/**
+ * Helper function to get the WP Filesystem instance, which is needed for file operations in the plugin.
+ *
+ * @return ?WP_Filesystem_Base The WP Filesystem instance, or `null` if it couldn't be initialized.
+ */
+function cno_health_dashboard_get_filesystem(): ?WP_Filesystem_Base {
+	static $fs = null;
+
+	if ( null !== $fs ) {
+		return $fs;
+	}
+
+	require_once ABSPATH . 'wp-admin/includes/file.php';
+
+	WP_Filesystem();
+
+	global $wp_filesystem;
+
+	$fs = $wp_filesystem ?: null; // phpcs:ignore Universal.Operators.DisallowShortTernary.Found
+
+	return $fs;
+}

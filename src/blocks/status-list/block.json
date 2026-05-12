@@ -3,19 +3,19 @@
 	"apiVersion": 3,
 	"name": "cno-health-dashboard/status-list",
 	"version": "1.0.0",
-	"title": "CNO Health Dashboard Status List",
+	"title": "[Health Dashboard] Statuses List",
 	"category": "text",
 	"icon": "chart-line",
-	"keywords": [ "health", "dashboard", "status list", "widget" ],
-	"description": "A block that displays the status list for the health dashboard.",
+	"keywords": [ "health", "dashboard", "statuses list", "status" ],
+	"description": "A block that displays the list of disease's statuses for the health dashboard.",
 	"example": {},
 	"supports": {
 		"html": false,
 		"align": true,
-		"multiple": false,
 		"customClassName": true,
 		"spacing": {
-			"margin": true
+			"margin": true,
+			"padding": true
 		}
 	},
 	"editorScript": "file:./index.tsx",

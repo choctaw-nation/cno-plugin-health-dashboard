@@ -8,20 +8,10 @@
 
 namespace ChoctawNation\HealthDashboard;
 
-use ChoctawNation\HealthDashboard\WP\AdminScreen\Admin_Screen;
-use ChoctawNation\HealthDashboard\Http\Rest_Router;
-use ChoctawNation\HealthDashboard\WP\Notifier;
-use ChoctawNation\HealthDashboard\WP\Plugin_Settings;
+use ChoctawNation\HealthDashboard\Rest_Router;
 
 /** Inits the Plugin */
 class Plugin_Loader {
-	/**
-	 * Plugin Settings
-	 *
-	 * @var Plugin_Settings $settings
-	 */
-	private Plugin_Settings $settings;
-
 	/**
 	 * Directory path of the plugin, used for loading assets and block metadata.
 	 *
@@ -35,7 +25,6 @@ class Plugin_Loader {
 	 * @param string $dir_path The directory path of the plugin, used for loading assets and block metadata.
 	 */
 	public function __construct( string $dir_path ) {
-		$this->settings = new Plugin_Settings();
 		$this->dir_path = $dir_path;
 	}
 
@@ -45,7 +34,6 @@ class Plugin_Loader {
 	 * @return void
 	 */
 	public function activate(): void {
-		$this->settings->initialize_defaults();
 		flush_rewrite_rules();
 	}
 
@@ -64,26 +52,16 @@ class Plugin_Loader {
 	 * (this is a callback function for the `register_uninstall_hook` function)
 	 */
 	public static function uninstall(): void {
-		$settings = new Plugin_Settings();
-		$settings->delete_settings();
+		// nothing to do here
 	}
 
 	/**
 	 * Loads the Plugin
 	 */
 	public function load_plugin(): void {
-		$notifier = new Notifier( array( 'kroelke@choctawnation.com', 'bperkins@choctawnation.com' ) );
-		// load rest routers
-		$rest_router = new Rest_Router( $this->settings, $notifier );
-		add_action( 'rest_api_init', array( $rest_router, 'register_routes' ) );
-		$settings_rest_controller = new WP\AdminScreen\Settings_Rest_Controller( $this->settings );
-		add_action( 'rest_api_init', array( $settings_rest_controller, 'register_routes' ) );
-		// load admin screen
-		$admin_screen = new Admin_Screen( $this->settings );
-		add_action( 'admin_menu', array( $admin_screen, 'register_menus' ) );
-		add_action( 'admin_enqueue_scripts', array( $admin_screen, 'load_required_assets' ) );
+		$rest_router = new Rest_Router( new File_Reader( 'cno_health_dashboard_get_filesystem' ) );
 
-		// load block
+		add_action( 'rest_api_init', array( $rest_router, 'register_routes' ) );
 		add_action( 'init', array( $this, 'register_blocks' ) );
 	}
 

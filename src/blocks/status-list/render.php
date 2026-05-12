@@ -6,15 +6,17 @@
  * @subpackage HealthDashboard
  */
 
-use ChoctawNation\HealthDashboard\Health_Analytics_Handler;
+use ChoctawNation\HealthDashboard\File_Reader;
 
-$handler = new Health_Analytics_Handler();
-$data    = $handler->get_latest_health_data_array();
+$file_reader = new File_Reader( 'cno_health_dashboard_get_filesystem' );
+$data        = $file_reader->get_latest_disease_statuses();
 if ( empty( $data ) ) {
 	echo 'No data available';
 	return;
 }
 ?>
 <ul>
-	<li>a list of data</li>
+	<?php foreach ( $data as $disease => $comparison ) : ?>
+	<li><?php echo esc_html( $disease ); ?>: <?php echo esc_html( $comparison ); ?></li>
+	<?php endforeach; ?>
 </ul>

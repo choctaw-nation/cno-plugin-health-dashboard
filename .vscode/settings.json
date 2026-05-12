@@ -46,8 +46,10 @@
 		"featuredmedia",
 		"instantiator",
 		"muplugins",
+		"NOVALUE",
 		"Squiz",
 		"twicedaily",
+		"virality",
 		"wpengine"
 	],
 	"css.format.spaceAroundSelectorSeparator": true,

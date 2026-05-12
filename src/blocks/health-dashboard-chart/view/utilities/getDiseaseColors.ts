@@ -56,7 +56,7 @@ const colorGroups = {
 
 /**
  * Get a random color from declared CSS variables
- * @returns Random CSS variable
+ * @return Random CSS variable
  */
 export default function getColors(
 	diseaseName: diseaseNames,

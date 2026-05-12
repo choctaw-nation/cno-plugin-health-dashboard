@@ -6,10 +6,10 @@
  * @subpackage HealthDashboard
  */
 
-use ChoctawNation\HealthDashboard\Health_Analytics_Handler;
+use ChoctawNation\HealthDashboard\File_Reader;
 
-$handler = new Health_Analytics_Handler();
-$data    = $handler->get_latest_health_data_array();
+$file_reader = new File_Reader( 'cno_health_dashboard_get_filesystem' );
+$data        = $file_reader->get_latest_data();
 if ( empty( $data ) ) {
 	echo 'No data available';
 	return;

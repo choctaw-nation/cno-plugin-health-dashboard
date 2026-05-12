@@ -5,19 +5,10 @@ import { useBlockProps } from '@wordpress/block-editor';
  * Internal dependencies
  */
 import block from './block.json';
+import Edit from './Edit';
 
 registerBlockType( block.name, {
-	edit: () => {
-		const blockProps = useBlockProps( {
-			style: {
-				width: '100%',
-				backgroundColor: '#ccc',
-				color: 'black',
-				padding: '3rem',
-			},
-		} );
-		return <div { ...blockProps }>Health Data Chart</div>;
-	},
+	edit: Edit,
 	save() {
 		const blockProps = useBlockProps.save( { id: 'app' } );
 		return <div { ...blockProps } />;
