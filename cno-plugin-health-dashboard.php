@@ -3,7 +3,7 @@
  * Plugin Name: [Choctaw Nation of Oklahoma] Health Dashboard App
  * Description: Displays a virality chart of common diseases with recharts.
  * Plugin URI: https://github.com/choctaw-nation/cno-plugin-health-dashboard
- * Version: 1.0.1
+ * Version: 1.1.0
  * Author: Choctaw Nation of Oklahoma
  * Author URI: https://www.choctawnation.com
  * Text Domain: cno
